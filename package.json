@@ -5,10 +5,14 @@
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
+    "watch": "vue-cli-service build --mode=development --watch",
     "lint": "vue-cli-service lint"
   },
   "dependencies": {
+    "bootstrap": "^4.6.1",
     "core-js": "^3.8.3",
+    "jquery": "^3.6.0",
+    "popper.js": "^1.16.1",
     "vue": "^3.2.13"
   },
   "devDependencies": {
