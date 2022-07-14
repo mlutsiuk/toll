@@ -29,18 +29,19 @@
         </div>
 
 
-
-<!--        <h4>Акциз - {{ excise }}</h4>-->
-<!--        <h4>Мито - {{ impost }}</h4>-->
-<!--        <h4>ПДВ - {{ PDV }}</h4>-->
-<!--        <hr>-->
-<!--        <h4>Загальна ціна - {{ totalSum }}</h4>-->
+        <!--        <h4>Акциз - {{ excise }}</h4>-->
+        <!--        <h4>Мито - {{ impost }}</h4>-->
+        <!--        <h4>ПДВ - {{ PDV }}</h4>-->
+        <!--        <hr>-->
+        <!--        <h4>Загальна ціна - {{ totalSum }}</h4>-->
     </div>
 </template>
 
 <script>
 import ManufactureDateSelect from "@/components/Shared/ManufactureDateSelect";
 import EngineTypeRadio from "@/components/Shared/EngineTypeRadio";
+
+import { rates, engineTypes } from '@/data/constants.json';
 
 export default {
     name: 'PassengerCarCalculator',
@@ -51,29 +52,37 @@ export default {
     data: () => ({
         engineType: '',
         engineVolume: '',
-        carAge: 0,
+        carAge: 1,
         carPrice: 0,
-        impostRate: 10
     }),
     computed: {
-        engineVolumeInLiters() {
-            return this.engineVolume / 1000;
+        impostSum() {
+            return this.carPrice * (rates.impost / 100.0);
         },
-        rate() {
-            return this.engineVolume < 3500 ? 75 : 150;
+
+        exciseRate() {
+            let parsedEngineVolume = parseInt(this.engineVolume);
+
+            if (this.engineType === engineTypes.diesel) {
+                return parsedEngineVolume <= 3500 ? 75 : 150;
+            }
+            else if(this.engineType === engineTypes.benzine) {
+                return parsedEngineVolume <= 3000 ? 50 : 100;
+            }
+
+            return 0;
         },
-        excise() {
-            return this.rate * this.engineVolumeInLiters * this.carAge;
+        exciseSum() {
+            let engineVolumeInLiters = parseInt(this.engineVolume) / 1000;
+
+            return engineVolumeInLiters * this.exciseRate *  this.carAge;
         },
-        impost() {
-            return this.carPrice * (this.impostRate / 100.0);
-        },
+
         PDV() {
-            const PDVRate = 20;
-            return (parseInt(this.carPrice) + parseInt(this.excise) + parseInt(this.impost)) * (PDVRate / 100.0);
+            return (parseInt(this.carPrice) + this.exciseSum + this.impostSum) * (rates.pdv / 100.0);
         },
         totalSum() {
-            return this.excise + this.impost + this.PDV;
+            return this.exciseSum + this.impostSum + this.PDV;
         }
 
     }
