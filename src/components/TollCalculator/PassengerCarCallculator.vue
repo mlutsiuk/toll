@@ -43,7 +43,7 @@ import ManufactureDateSelect from "@/components/Shared/ManufactureDateSelect";
 import EngineTypeRadio from "@/components/Shared/EngineTypeRadio";
 
 export default {
-    name: 'DieselCalculator',
+    name: 'PassengerCarCalculator',
     components: {
         EngineTypeRadio,
         ManufactureDateSelect

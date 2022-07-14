@@ -3,12 +3,15 @@
         <brand-tabs
             :headers="tabHeaders"
         >
-            <template #tab-diesel>
-                <h2>Diesel</h2>
-                <diesel-calculator/>
+            <template #tab-passenger>
+                <h2>Легковий</h2>
+
+                <passenger-car-calculator/>
             </template>
-            <template #tab-benzine>
-                <h2>Benzine</h2>
+            <template #tab-truck>
+                <h2>Тягач</h2>
+
+
             </template>
         </brand-tabs>
     </div>
@@ -16,29 +19,25 @@
 
 <script>
 import BrandTabs from '@/components/Shared/BrandTabs';
-import DieselCalculator from '@/components/TollCalculator/DieselCalculator';
+import PassengerCarCalculator from '@/components/TollCalculator/PassengerCarCallculator';
 
 export default {
     name: 'TollCalculator',
     components: {
-        DieselCalculator,
+        PassengerCarCalculator,
         BrandTabs
     },
     data: () => ({
         tabHeaders: [
             {
-                id: 'benzine',
-                title: 'Бензин'
+                id: 'passenger',
+                title: 'Легковий'
             },
             {
-                id: 'diesel',
-                title: 'Дизель'
+                id: 'truck',
+                title: 'Тягач'
             }
         ]
     })
 };
 </script>
-
-<style scoped>
-
-</style>
