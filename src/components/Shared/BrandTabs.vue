@@ -14,7 +14,7 @@
                 </a>
             </li>
         </ul>
-        <div>
+        <div class="pt-2">
             <div
                 v-show="tab.id === this.activeTab"
                 v-for="tab in headers"
