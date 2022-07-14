@@ -3,5 +3,9 @@
     "pdv": 20,
     "impost": 10
   },
+  "engineTypes": {
+    "benzine": "benzine",
+    "diesel": "diesel"
+  },
   "maxCarAgeModifier": 15
 }

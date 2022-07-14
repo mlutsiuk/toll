@@ -23,6 +23,8 @@
 </template>
 
 <script>
+import { engineTypes } from '@/data/constants.json';
+
 export default {
     name: "EngineTypeRadio",
     emits: [
@@ -38,11 +40,11 @@ export default {
         types: [
             {
                 title: 'Бензин',
-                code: 'benzine'
+                code: engineTypes.benzine
             },
             {
                 title: 'Дизель',
-                code: 'diesel'
+                code: engineTypes.diesel
             }
         ]
     }),
