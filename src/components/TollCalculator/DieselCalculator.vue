@@ -2,7 +2,7 @@
     <div>
         <h3>{{ engineVolume }}</h3>
         <text-field v-model="engineVolume" id="engine_volume" label="Об'єм двигуна"/>
-        <text-field v-model="carAge" id="car_age" label="Вік автомобіля"/>
+        <manufacture-date-select v-model:age="carAge"/>
         <text-field v-model="carPrice" id="car_price" label="Ціна автомобіля"/>
 
 
@@ -17,9 +17,12 @@
 
 <script>
 import TextField from '@/components/Shared/TextField';
+import ManufactureDateSelect from "@/components/Shared/ManufactureDateSelect";
+
 export default {
     name: 'DieselCalculator',
     components: {
+        ManufactureDateSelect,
         TextField
     },
     data: () => ({
@@ -52,7 +55,3 @@ export default {
     }
 };
 </script>
-
-<style scoped>
-
-</style>
