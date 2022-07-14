@@ -1,0 +1,7 @@
+{
+  "rates": {
+    "pdv": 20,
+    "impost": 10
+  },
+  "maxCarAgeModifier": 15
+}
