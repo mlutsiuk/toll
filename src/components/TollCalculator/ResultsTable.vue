@@ -11,7 +11,7 @@
         <tbody>
         <tr>
             <th scope="row">Акциз</th>
-            <td>{{ excise.base || 0 }} EUR</td>
+            <td>{{ excise.base || 0 }} см<sup>3</sup></td>
             <td>{{ excise.rate }}</td>
             <td>{{ excise.sum.toFixed(2) }} EUR</td>
         </tr>
