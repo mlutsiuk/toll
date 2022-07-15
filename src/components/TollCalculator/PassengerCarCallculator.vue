@@ -1,39 +1,59 @@
 <template>
-    <div class="row">
-        <div class="col-auto d-flex align-items-center pr-5">
-            <engine-type-radio v-model:engine-type="engineType"/>
-        </div>
+    <div>
+        <div class="row">
+            <div class="col-auto d-flex align-items-center pr-5">
+                <engine-type-radio v-model:engine-type="engineType"/>
+            </div>
 
-        <div class="col">
-            <label for="engine_volume">Ціна автомобіля</label>
-            <div class="input-group mb-2 mr-sm-2">
-                <input v-model="carPrice" id="car_price" type="text" class="form-control">
-                <div class="input-group-append">
-                    <div class="input-group-text">EUR</div>
+            <div class="col">
+                <label for="engine_volume">Ціна автомобіля</label>
+                <div class="input-group mb-2 mr-sm-2">
+                    <input v-model="carPrice" id="car_price" type="text" class="form-control">
+                    <div class="input-group-append">
+                        <div class="input-group-text">EUR</div>
+                    </div>
                 </div>
+            </div>
+
+            <div class="col">
+                <label for="engine_volume">Об'єм двигуна</label>
+                <div class="input-group mb-2 mr-sm-2">
+                    <input v-model="engineVolume" id="engine_volume" type="text" class="form-control">
+                    <div class="input-group-append">
+                        <div class="input-group-text">см<sup>3</sup></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col">
+                <manufacture-date-select v-model:age="carAge"/>
             </div>
         </div>
 
-        <div class="col">
-            <label for="engine_volume">Об'єм двигуна</label>
-            <div class="input-group mb-2 mr-sm-2">
-                <input v-model="engineVolume" id="engine_volume" type="text" class="form-control">
-                <div class="input-group-append">
-                    <div class="input-group-text">см<sup>3</sup></div>
-                </div>
-            </div>
-        </div>
+        <results-table
+            :excise="{
+                base: engineVolume,
+                rate: `${carAge}×${exciseRate}`,
+                sum: exciseSum
+            }"
+            :impost="{
+                base: carPrice,
+                rate: impostRate,
+                sum: impostSum
+            }"
+            :pdv="{
+                base: pdvBase,
+                rate: pdvRate,
+                sum: pdvSum
+            }"
+            :total-sum="totalSum"
+        />
 
-        <div class="col">
-            <manufacture-date-select v-model:age="carAge"/>
-        </div>
-
-
-        <!--        <h4>Акциз - {{ excise }}</h4>-->
-        <!--        <h4>Мито - {{ impost }}</h4>-->
-        <!--        <h4>ПДВ - {{ PDV }}</h4>-->
-        <!--        <hr>-->
-        <!--        <h4>Загальна ціна - {{ totalSum }}</h4>-->
+<!--        <h4>Акциз - {{ exciseSum }}</h4>-->
+<!--        <h4>Мито - {{ impostSum }}</h4>-->
+<!--        <h4>ПДВ - {{ PDV }}</h4>-->
+<!--        <hr>-->
+<!--        <h4>Загальна ціна - {{ totalSum }}</h4>-->
     </div>
 </template>
 
@@ -42,10 +62,12 @@ import ManufactureDateSelect from "@/components/Shared/ManufactureDateSelect";
 import EngineTypeRadio from "@/components/Shared/EngineTypeRadio";
 
 import { rates, engineTypes } from '@/data/constants.json';
+import ResultsTable from "@/components/TollCalculator/ResultsTable";
 
 export default {
     name: 'PassengerCarCalculator',
     components: {
+        ResultsTable,
         EngineTypeRadio,
         ManufactureDateSelect
     },
@@ -56,8 +78,11 @@ export default {
         carPrice: 0,
     }),
     computed: {
+        impostRate() {
+            return rates.impost;
+        },
         impostSum() {
-            return this.carPrice * (rates.impost / 100.0);
+            return this.carPrice * (this.impostRate / 100.0);
         },
 
         exciseRate() {
@@ -75,14 +100,21 @@ export default {
         exciseSum() {
             let engineVolumeInLiters = parseInt(this.engineVolume) / 1000;
 
-            return engineVolumeInLiters * this.exciseRate *  this.carAge;
+            return (engineVolumeInLiters * this.exciseRate *  this.carAge) || 0;
         },
 
-        PDV() {
-            return (parseInt(this.carPrice) + this.exciseSum + this.impostSum) * (rates.pdv / 100.0);
+        pdvRate() {
+            return rates.pdv;
         },
+        pdvBase() {
+            return parseInt(this.carPrice) + this.exciseSum + this.impostSum;
+        },
+        pdvSum() {
+            return this.pdvBase * (this.pdvRate / 100.0);
+        },
+
         totalSum() {
-            return this.exciseSum + this.impostSum + this.PDV;
+            return this.exciseSum + this.impostSum + this.pdvSum;
         }
 
     }
