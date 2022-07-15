@@ -6,7 +6,7 @@
             </div>
 
             <div class="col">
-                <label for="engine_volume">Ціна автомобіля</label>
+                <label for="engine_volume">Вартість автомобіля</label>
                 <div class="input-group mb-2 mr-sm-2">
                     <input v-model="carPrice" id="car_price" type="text" class="form-control">
                     <div class="input-group-append">
@@ -76,7 +76,7 @@ export default {
             return rates.impost;
         },
         impostSum() {
-            return this.carPrice * (this.impostRate / 100.0);
+            return parseInt(this.carPrice) * (this.impostRate / 100.0);
         },
 
         exciseRate() {
