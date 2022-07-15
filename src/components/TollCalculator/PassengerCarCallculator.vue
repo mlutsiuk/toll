@@ -48,12 +48,6 @@
             }"
             :total-sum="totalSum"
         />
-
-<!--        <h4>Акциз - {{ exciseSum }}</h4>-->
-<!--        <h4>Мито - {{ impostSum }}</h4>-->
-<!--        <h4>ПДВ - {{ PDV }}</h4>-->
-<!--        <hr>-->
-<!--        <h4>Загальна ціна - {{ totalSum }}</h4>-->
     </div>
 </template>
 
