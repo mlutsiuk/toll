@@ -76,7 +76,7 @@ export default {
             return rates.impost;
         },
         impostSum() {
-            return parseInt(this.carPrice) * (this.impostRate / 100.0);
+            return (parseInt(this.carPrice) * (this.impostRate / 100.0)) || 0;
         },
 
         exciseRate() {
@@ -104,7 +104,7 @@ export default {
             return parseInt(this.carPrice) + this.exciseSum + this.impostSum;
         },
         pdvSum() {
-            return this.pdvBase * (this.pdvRate / 100.0);
+            return (this.pdvBase * (this.pdvRate / 100.0)) || 0;
         },
 
         totalSum() {

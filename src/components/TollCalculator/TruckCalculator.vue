@@ -62,7 +62,7 @@ export default {
             return parseInt(this.carPrice) + this.impostSum;
         },
         pdvSum() {
-            return this.pdvBase * (this.pdvRate / 100.0);
+            return (this.pdvBase * (this.pdvRate / 100.0)) || 0;
         },
 
         totalSum() {
