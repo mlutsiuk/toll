@@ -11,7 +11,7 @@
             <template #tab-truck>
                 <h2>Тягач</h2>
 
-
+                <truck-calculator/>
             </template>
         </brand-tabs>
     </div>
@@ -20,10 +20,12 @@
 <script>
 import BrandTabs from '@/components/Shared/BrandTabs';
 import PassengerCarCalculator from '@/components/TollCalculator/PassengerCarCallculator';
+import TruckCalculator from "@/components/TollCalculator/TruckCalculator";
 
 export default {
     name: 'TollCalculator',
     components: {
+        TruckCalculator,
         PassengerCarCalculator,
         BrandTabs
     },
