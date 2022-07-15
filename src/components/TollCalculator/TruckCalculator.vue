@@ -1,7 +1,7 @@
 <template>
     <div>
         <div class="row">
-            <div class="col">
+            <div class="col-4">
                 <label for="engine_volume">Вартість автомобіля</label>
                 <div class="input-group mb-2 mr-sm-2">
                     <input v-model="carPrice" id="car_price" type="text" class="form-control">

@@ -1,11 +1,11 @@
 <template>
     <div>
         <div class="row">
-            <div class="col-auto d-flex align-items-center pr-5">
+            <div class="col-6 col-lg d-flex align-items-center pr-5">
                 <engine-type-radio v-model:engine-type="engineType"/>
             </div>
 
-            <div class="col">
+            <div class="col-6 col-lg-3">
                 <label for="engine_volume">Вартість автомобіля</label>
                 <div class="input-group mb-2 mr-sm-2">
                     <input v-model="carPrice" id="car_price" type="text" class="form-control">
@@ -15,7 +15,7 @@
                 </div>
             </div>
 
-            <div class="col">
+            <div class="col-6 col-lg-3">
                 <label for="engine_volume">Об'єм двигуна</label>
                 <div class="input-group mb-2 mr-sm-2">
                     <input v-model="engineVolume" id="engine_volume" type="text" class="form-control">
@@ -25,7 +25,7 @@
                 </div>
             </div>
 
-            <div class="col">
+            <div class="col-6 col-lg-3">
                 <manufacture-date-select v-model:age="carAge"/>
             </div>
         </div>
