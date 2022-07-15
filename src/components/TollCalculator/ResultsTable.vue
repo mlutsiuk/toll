@@ -28,9 +28,9 @@
             <td>{{ pdv.sum.toFixed(2) }} EUR</td>
         </tr>
         <tr>
-            <th scope="row">Сума</th>
+            <th scope="row">Загалом</th>
             <td colspan="2"></td>
-            <td>{{ totalSum.toFixed(2) }} EUR</td>
+            <td class="font-weight-bold">{{ totalSum.toFixed(2) }} EUR</td>
         </tr>
         </tbody>
     </table>
