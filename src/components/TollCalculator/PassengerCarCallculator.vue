@@ -54,9 +54,8 @@
 <script>
 import ManufactureDateSelect from "@/components/Shared/ManufactureDateSelect";
 import EngineTypeRadio from "@/components/Shared/EngineTypeRadio";
-
-import { rates, engineTypes } from '@/data/constants.json';
 import ResultsTable from "@/components/TollCalculator/ResultsTable";
+import { rates, engineTypes } from '@/data/constants.json';
 
 export default {
     name: 'PassengerCarCalculator',
