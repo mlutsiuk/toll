@@ -1,13 +1,11 @@
 <template>
     <div>
-        <div class="row">
-            <div class="col-4">
+        <div class="flex-row fields-row">
+            <div class="col-xs-4">
                 <label for="engine_volume">Вартість автомобіля</label>
-                <div class="input-group mb-2 mr-sm-2">
+                <div class="input-group input-group-lg">
                     <input v-model="carPrice" id="car_price" type="text" class="form-control">
-                    <div class="input-group-append">
-                        <div class="input-group-text">EUR</div>
-                    </div>
+                    <div class="input-group-addon">EUR</div>
                 </div>
             </div>
         </div>
@@ -72,3 +70,17 @@ export default {
 
 }
 </script>
+
+<style scoped>
+.flex-row {
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    margin-right: -15px;
+}
+
+.fields-row {
+    margin-bottom: 15px;
+}
+</style>

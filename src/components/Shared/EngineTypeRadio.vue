@@ -3,21 +3,18 @@
         <div
             v-for="type in types"
             :key="type.code"
-            class="custom-control custom-radio"
+            class="radio"
         >
-            <input
-                type="radio"
-                :value="type.code"
-                v-model="engineTypeModel"
-                :id="'engine_type_radio_' + type.code"
-                name="engine_type_radio"
-                class="custom-control-input"
-            >
-            <label
-                v-text="type.title"
-                :for="'engine_type_radio_' + type.code"
-                class="custom-control-label"
-            />
+
+            <label>
+                <input
+                    v-model="engineTypeModel"
+                    :value="type.code"
+                    type="radio"
+                    name="engine_type_radio"
+                >
+                {{ type.title }}
+            </label>
         </div>
     </div>
 </template>

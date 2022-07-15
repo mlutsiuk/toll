@@ -1,11 +1,11 @@
 <template>
     <div>
-        <div class="form-group">
+        <div class="form-group input-group-lg">
             <label for="car_manufacture_year">Рік виготовлення</label>
             <select
                 id="car_manufacture_year"
                 v-model="ageModel"
-                class="custom-select"
+                class="form-control"
             >
                 <option v-for="year in years" :value="year.value" :key="year.value">
                     {{ year.text }}
