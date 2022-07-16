@@ -51,4 +51,8 @@ export default {
 li.nav-item {
     cursor: pointer;
 }
+
+li.nav-item > a {
+    border-radius: 0;
+}
 </style>
