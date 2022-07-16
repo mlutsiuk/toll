@@ -14,14 +14,14 @@
                 </a>
             </li>
         </ul>
-        <div class="pt-2">
+        <div>
             <div
                 v-show="tab.id === this.activeTab"
                 v-for="tab in headers"
                 :key="'tab-content-' + tab.title"
             >
                 <slot :name="'tab-' + tab.id">
-                    <h1>{{ tab.title }}</h1>
+                    <h4>{{ tab.title }}</h4>
                 </slot>
             </div>
         </div>

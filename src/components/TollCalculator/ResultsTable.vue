@@ -1,5 +1,5 @@
 <template>
-    <table class="table table-hover text-center table-striped table-bordered">
+    <table class="table table-hover table-striped table-bordered">
         <thead>
         <tr>
             <th scope="col">Платіж</th>
@@ -80,5 +80,8 @@ export default {
 <style scoped>
 .table td, .table th {
     border: none;
+    color: #333;
+
+    text-align: center;
 }
 </style>
