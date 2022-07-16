@@ -1,20 +1,14 @@
 <template>
-    <div class="container">
-        <brand-tabs
-            :headers="tabHeaders"
-        >
-            <template #tab-passenger>
-                <h2>Легковий</h2>
-
-                <passenger-car-calculator/>
-            </template>
-            <template #tab-truck>
-                <h2>Тягач</h2>
-
-                <truck-calculator/>
-            </template>
-        </brand-tabs>
-    </div>
+    <brand-tabs
+        :headers="tabHeaders"
+    >
+        <template #tab-passenger>
+            <passenger-car-calculator/>
+        </template>
+        <template #tab-truck>
+            <truck-calculator/>
+        </template>
+    </brand-tabs>
 </template>
 
 <script>

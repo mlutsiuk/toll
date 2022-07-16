@@ -1,7 +1,5 @@
 <template>
-    <div class="container">
-        <toll-calculator/>
-    </div>
+    <toll-calculator/>
 </template>
 
 <script>

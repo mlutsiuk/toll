@@ -6,9 +6,10 @@
                 v-for="tab in headers"
                 :key="'tab-header-' + tab.title"
                 class="nav-item"
+                :class="{ 'active': tab.id === this.activeTab }"
             >
                 <a
-                    :class="{'nav-link': true, 'active': tab.id === this.activeTab}"
+                    class="nav-link"
                 >
                     {{ tab.title }}
                 </a>

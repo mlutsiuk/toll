@@ -115,7 +115,7 @@ export default {
     display: flex;
     -ms-flex-wrap: wrap;
     flex-wrap: wrap;
-    margin-right: -15px;
+    /*margin-right: -15px;*/
 }
 
 .flex-align-items-center {
